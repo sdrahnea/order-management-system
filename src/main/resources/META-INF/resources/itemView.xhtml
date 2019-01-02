@@ -1,0 +1,43 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="main.xhtml"
+>
+
+    <ui:define name="general_content">
+
+        <p:panel header="Item">
+            <p:panelGrid columns="2" id="itemPanel">
+
+                <h:outputLabel value="ID" />
+                <p:outputLabel value="#{itemController.selectedObject.id}"/>
+
+                <h:outputLabel value="Name" />
+                <p:inputText  value="#{itemController.selectedObject.name}"/>
+
+                <h:outputLabel value="Notes" />
+                <p:inputTextarea  value="#{itemController.selectedObject.notes}"
+                                  cols="100" rows="15"/>
+
+                <h:outputLabel value="Created date" />
+                <p:outputLabel  value="#{itemController.selectedObject.createdDate}"/>
+
+                <h:outputLabel value="Valid to date" />
+                <p:inputText value="#{itemController.selectedObject.endDate}" />
+
+            </p:panelGrid>
+            <p:commandButton value="Cancel"
+                             action="#{itemController.cancel}"
+                             process="@all"
+                             update="@all"
+                             icon="ui-icon-disk" />
+            <p:commandButton value="#{itemController.editButtonCaption}"
+                             action="#{itemController.save}"
+                             process="@all"
+                             update="@all"
+                             icon="ui-icon-disk" />
+        </p:panel>
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,106 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="main.xhtml"
+>
+
+    <ui:define name="general_content">
+
+        <p:panel header="Article">
+            <p:panelGrid columns="2" id="articlePanel">
+
+                <h:outputLabel value="ID" />
+                <p:outputLabel value="#{articleController.selectedObject.id}"/>
+
+                <h:outputLabel value="Type" />
+                <p:selectOneMenu value="#{articleController.selectedObject.articleType}"
+                                 converter="articleTypeConverter"
+                                 effect="fold"
+                                 editable="true">
+                    <f:selectItem itemLabel="Select One" itemValue="" />
+                    <f:selectItems value="#{articleTypeController.list}"
+                                   var="articleType"
+                                   itemLabel="#{articleType.name}"
+                                   itemValue="#{articleType}"/>
+                </p:selectOneMenu>
+
+                <h:outputLabel value="Category" />
+                <p:selectOneMenu value="#{articleController.selectedObject.articleCategory}"
+                                 converter="articleCategoryConverter"
+                                 effect="fold"
+                                 editable="true">
+                    <f:selectItem itemLabel="Select One" itemValue="" />
+                    <f:selectItems value="#{articleCategoryController.list}"
+                                   var="articleCategory"
+                                   itemLabel="#{articleCategory.name}"
+                                   itemValue="#{articleCategory}"/>
+                </p:selectOneMenu>
+
+                <h:outputLabel value="Provider" />
+                <p:selectOneMenu value="#{articleController.selectedObject.provider}"
+                                 converter="unitConverter"
+                                 effect="fold"
+                                 editable="true">
+                    <f:selectItem itemLabel="Select One" itemValue="" />
+                    <f:selectItems value="#{unitController.providerList}"
+                                   var="provider"
+                                   itemLabel="#{provider.name}"
+                                   itemValue="#{provider}"/>
+                </p:selectOneMenu>
+                
+                <h:outputLabel value="Unit Of Measure" />
+                <p:selectOneMenu value="#{articleController.selectedObject.unitOfMeasure}"
+                                 converter="unitOfMeasureConverter"
+                                 effect="fold"
+                                 editable="true">
+                    <f:selectItem itemLabel="Select One" itemValue="" />
+                    <f:selectItems value="#{unitOfMeasureController.list}"
+                                   var="unitOfMeasure"
+                                   itemLabel="#{unitOfMeasure.name}"
+                                   itemValue="#{unitOfMeasure}"/>
+                </p:selectOneMenu>
+
+                <h:outputLabel value="Logical ID" />
+                <p:inputText  value="#{articleController.selectedObject.logicalId}"/>
+
+                <h:outputLabel value="Name" />
+                <p:inputText  value="#{articleController.selectedObject.name}"/>
+
+                <h:outputLabel value="Quantity" />
+                <p:inputText  value="#{articleController.selectedObject.quantity}"/>
+
+                <h:outputLabel value="Warning quantity" />
+                <p:inputText  value="#{articleController.selectedObject.warnQuantity}"/>
+
+                <h:outputLabel value="Provider price" />
+                <p:inputText  value="#{articleController.selectedObject.providerPrice}"/>
+
+                <h:outputLabel value="Sales price" />
+                <p:inputText  value="#{articleController.selectedObject.salePrice}"/>
+
+                <h:outputLabel value="Notes" />
+                <p:inputTextarea  value="#{articleController.selectedObject.notes}"
+                                  cols="100" rows="15"/>
+
+                <h:outputLabel value="Created date" />
+                <p:outputLabel  value="#{articleController.selectedObject.createdDate}"/>
+
+                <h:outputLabel value="Valid to date" />
+                <p:inputText value="#{articleController.selectedObject.endDate}" />
+
+            </p:panelGrid>
+            <p:commandButton value="Cancel"
+                             action="#{articleController.cancel}"
+                             process="@all"
+                             update="@all"
+                             icon="ui-icon-disk" />
+            <p:commandButton value="#{articleController.editButtonCaption}"
+                             action="#{articleController.save}"
+                             process="@all"
+                             update="@all"
+                             icon="ui-icon-disk" />
+        </p:panel>
+    </ui:define>
+</ui:composition>

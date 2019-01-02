@@ -1,0 +1,55 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="main.xhtml"
+>
+
+    <ui:define name="general_content">
+
+        <p:panel header="Person">
+            <p:panelGrid columns="2" id="personPanel">
+
+                <h:outputLabel value="ID" />
+                <p:outputLabel value="#{personController.selectedObject.id}"/>
+
+                <h:outputLabel value="First name" />
+                <p:inputText  value="#{personController.selectedObject.firstName}"/>
+
+                <h:outputLabel value="Last name" />
+                <p:inputText  value="#{personController.selectedObject.lastName}"/>
+
+                <h:outputLabel value="Phone" />
+                <p:inputText  value="#{personController.selectedObject.phone}"/>
+
+                <h:outputLabel value="Email" />
+                <p:inputText  value="#{personController.selectedObject.email}"/>
+
+                <h:outputLabel value="Fax" />
+                <p:inputText  value="#{personController.selectedObject.fax}"/>
+
+                <h:outputLabel value="Notes" />
+                <p:inputTextarea  value="#{personController.selectedObject.notes}"
+                                  cols="100" rows="15"/>
+
+                <h:outputLabel value="Created date" />
+                <p:outputLabel  value="#{personController.selectedObject.createdDate}"/>
+
+                <h:outputLabel value="Valid to date" />
+                <p:inputText value="#{personController.selectedObject.endDate}" />
+
+            </p:panelGrid>
+            <p:commandButton value="Cancel"
+                             action="#{personController.cancel}"
+                             process="@all"
+                             update="@all"
+                             icon="ui-icon-disk" />
+            <p:commandButton value="#{personController.editButtonCaption}"
+                             action="#{personController.save}"
+                             process="@all"
+                             update="@all"
+                             icon="ui-icon-disk" />
+        </p:panel>
+    </ui:define>
+</ui:composition>

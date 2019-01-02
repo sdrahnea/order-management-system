@@ -1,0 +1,58 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="main.xhtml"
+>
+
+    <ui:define name="general_content">
+
+        <p:panel header="Message Type list">
+
+            <h:dataTable id="messagetypeTable"
+                         binding="#{table}"
+                         value="#{messageTypeController.list}"
+                         var="messageType"
+                         class="table table-striped table-hover table-bordered tableUpdated">
+                <h:column>
+                    <f:facet name="header">Id</f:facet>
+                    <h:outputText value="#{table.rowIndex + 1}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Name</f:facet>
+                    <h:outputText value="#{messageType.name}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Notes</f:facet>
+                    <h:outputText value="#{messageType.notes}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Created date</f:facet>
+                    <h:outputText value="#{messageType.createdDate}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Valid to date</f:facet>
+                    <h:outputText value="#{messageType.endDate}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Update</f:facet>
+                    <h:commandButton action="#{messageTypeController.edit(messageType)}"
+                                     value="Edit"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Delete</f:facet>
+                    <h:commandButton action="#{messageTypeController.remove(messageType)}"
+                                     value="Delete"
+                                     class="btn btn-danger"/>
+                </h:column>
+            </h:dataTable>
+
+            <h:commandButton action="messagetypeView"
+                             value="Create New Message Type"
+                             class="btn btn-success btnSpace" />
+
+        </p:panel>
+
+    </ui:define>
+</ui:composition>

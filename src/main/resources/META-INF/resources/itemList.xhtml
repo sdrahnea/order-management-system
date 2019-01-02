@@ -1,0 +1,81 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="main.xhtml">
+
+    <ui:define name="general_content">
+
+        <p:panel header="Item list">
+
+            <p:dataTable id="itemTable"
+                         binding="#{table}"
+                         value="#{itemController.list}"
+                         var="item"
+                         class="table table-striped table-hover table-bordered tableUpdated"
+                         rows="10"
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown} {Exporters}"
+                         rowsPerPageTemplate="5,10,25,50"
+                         sortMode="multiple"
+                         emptyMessage="No item found">
+
+                <f:facet name="{Exporters}">
+                    <h:commandLink>
+                        <h:graphicImage value="/images/icon/excel-icon.png" width="24"/>
+                        <p:dataExporter type="xls" target="itemTable" fileName="items" />
+                    </h:commandLink>
+
+                    <h:commandLink>
+                        <h:graphicImage value="/images/icon/csv-icon.png" width="24"/>
+                        <p:dataExporter type="csv" target="itemTable" fileName="items" />
+                    </h:commandLink>
+
+                    <h:commandLink>
+                        <h:graphicImage value="/images/icon/xml-icon.png" width="24"/>
+                        <p:dataExporter type="xml" target="itemTable" fileName="items" />
+                    </h:commandLink>
+                </f:facet>
+
+                <p:column>
+                    <f:facet name="header">Id</f:facet>
+                    <h:outputText value="#{table.rowIndex + 1}" />
+                </p:column>
+                <p:column>
+                    <f:facet name="header">Name</f:facet>
+                    <h:outputText value="#{item.name}" />
+                </p:column>
+                <p:column>
+                    <f:facet name="header">Notes</f:facet>
+                    <h:outputText value="#{item.notes}" />
+                </p:column>
+                <p:column>
+                    <f:facet name="header">Created date</f:facet>
+                    <h:outputText value="#{item.createdDate}" />
+                </p:column>
+                <p:column>
+                    <f:facet name="header">Valid to date</f:facet>
+                    <h:outputText value="#{item.endDate}" />
+                </p:column>
+                <p:column>
+                    <f:facet name="header">Update</f:facet>
+                    <h:commandButton action="#{itemController.edit(item)}"
+                                     value="Edit"/>
+                </p:column>
+                <p:column>
+                    <f:facet name="header">Delete</f:facet>
+                    <h:commandButton action="#{itemController.remove(item)}"
+                                     value="Delete"
+                                     class="btn btn-danger"/>
+                </p:column>
+            </p:dataTable>
+
+            <p:commandButton action="itemView"
+                             value="Create New Item"
+                             class="btn btn-success btnSpace" />
+
+        </p:panel>
+
+    </ui:define>
+</ui:composition>

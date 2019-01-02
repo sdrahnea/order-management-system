@@ -1,0 +1,175 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="main.xhtml"
+>
+
+    <ui:define name="general_content">
+
+        <p:panel header="Unit">
+            <p:panelGrid columns="2" id="unitPanel">
+
+                <h:outputLabel value="ID" />
+                <p:outputLabel value="#{unitController.selectedObject.id}"/>
+
+                <h:outputLabel value="Type" />
+                <p:selectOneMenu value="#{unitController.selectedObject.unitType}"
+                                 converter="unitTypeConverter"
+                                 effect="fold"
+                                 editable="true">
+                    <f:selectItem itemLabel="Select One" itemValue="" />
+                    <f:selectItems value="#{unitTypeController.list}"
+                                   var="unitType"
+                                   itemLabel="#{unitType.name}"
+                                   itemValue="#{unitType}"/>
+                </p:selectOneMenu>
+
+                <h:outputLabel value="Unit Industry" />
+                <p:selectOneMenu value="#{unitController.selectedObject.unitIndustry}"
+                                 converter="unitIndustryConverter"
+                                 effect="fold"
+                                 editable="true">
+                    <f:selectItem itemLabel="Select One" itemValue="" />
+                    <f:selectItems value="#{unitIndustryController.list}"
+                                   var="unitIndustry"
+                                   itemLabel="#{unitIndustry.name}"
+                                   itemValue="#{unitIndustry}"/>
+                </p:selectOneMenu>
+
+                <h:outputLabel value="Name" />
+                <p:inputText  value="#{unitController.selectedObject.name}"/>
+
+                <h:outputLabel value="Address" />
+                <p:inputTextarea  value="#{unitController.selectedObject.address}"
+                                  cols="100" rows="5"/>
+
+                <h:outputLabel value="Email" />
+                <p:inputText  value="#{unitController.selectedObject.email}"/>
+
+                <h:outputLabel value="Phone" />
+                <p:inputText  value="#{unitController.selectedObject.phone}"/>
+
+                <h:outputLabel value="Fax" />
+                <p:inputText  value="#{unitController.selectedObject.fax}"/>
+
+                <h:outputLabel value="Contact person" />
+                <p:panelGrid columns="1">
+                    <p:dataTable id="unitContactPersonDatatable"
+                                 var="contactPerson"
+                                 value="#{unitController.selectedObject.persons}"
+                                 editable="true"
+                                >
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="First name" />
+                            </f:facet>
+                            <p:cellEditor>
+                                <f:facet name="output">
+                                    <h:outputText value="#{contactPerson.firstName}" />
+                                </f:facet>
+                                <f:facet name="input">
+                                    <p:inputText value="#{contactPerson.firstName}" />
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>
+                        
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Last name"/>
+                            </f:facet>
+                            <p:cellEditor>
+                                <f:facet name="output">
+                                    <h:outputText value="#{contactPerson.lastName}" />
+                                </f:facet>
+                                <f:facet name="input">
+                                    <p:inputText value="#{contactPerson.lastName}" />
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Phone" />
+                            </f:facet>
+                            <p:cellEditor>
+                                <f:facet name="output">
+                                    <h:outputText value="#{contactPerson.phone}" />
+                                </f:facet>
+                                <f:facet name="input">
+                                    <p:inputText value="#{contactPerson.phone}" />
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Email" />
+                            </f:facet>
+                            <p:cellEditor>
+                                <f:facet name="output">
+                                    <h:outputText value="#{contactPerson.email}" />
+                                </f:facet>
+                                <f:facet name="input">
+                                    <p:inputText value="#{contactPerson.email}" />
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Fax" />
+                            </f:facet>
+                            <p:cellEditor>
+                                <f:facet name="output">
+                                    <h:outputText value="#{contactPerson.fax}" />
+                                </f:facet>
+                                <f:facet name="input">
+                                    <p:inputText value="#{contactPerson.fax}" />
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>
+
+                        <p:column headerText="Options" >
+                            <p:rowEditor />
+                        </p:column>
+
+                    </p:dataTable>
+
+                    <p:commandButton value="Add"
+                                     actionListener="#{unitController.addPerson}"
+                                     update="unitContactPersonDatatable"
+                                     icon="ui-icon-disk"
+                    />
+
+                </p:panelGrid>
+
+                <h:outputLabel value="Additional information" />
+                <p:inputTextarea  value="#{unitController.selectedObject.additionalInfo}"
+                                  cols="100" rows="5"/>
+
+                <h:outputLabel value="Notes" />
+                <p:inputTextarea  value="#{unitController.selectedObject.notes}"
+                                  cols="100" rows="5"/>
+
+                <h:outputLabel value="Created date" />
+                <p:outputLabel  value="#{unitController.selectedObject.createdDate}"/>
+
+                <h:outputLabel value="Valid to date" />
+                <p:inputText value="#{unitController.selectedObject.endDate}" />
+
+            </p:panelGrid>
+            <p:commandButton value="Cancel"
+                             action="#{unitController.cancel}"
+                             process="@all"
+                             update="@all"
+                             icon="ui-icon-disk" />
+            <p:commandButton value="#{unitController.editButtonCaption}"
+                             action="#{unitController.save}"
+                             process="@all"
+                             update="@all"
+                             icon="ui-icon-disk" />
+        </p:panel>
+    </ui:define>
+</ui:composition>

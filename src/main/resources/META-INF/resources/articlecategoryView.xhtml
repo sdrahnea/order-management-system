@@ -1,0 +1,55 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="main.xhtml"
+>
+
+    <ui:define name="general_content">
+
+        <p:panel header="Article Category">
+            <p:panelGrid columns="2" id="articleCategoryPanel">
+
+                <h:outputLabel value="ID" />
+                <p:outputLabel value="#{articleCategoryController.selectedObject.id}"/>
+
+                <h:outputLabel value="Name" />
+                <p:inputText  value="#{articleCategoryController.selectedObject.name}"/>
+
+                <h:outputLabel value="Parent name" />
+                <p:selectOneMenu value="#{articleCategoryController.selectedObject.parentArticleCategory}"
+                                 converter="articleCategoryConverter"
+                                 effect="fold"
+                                 editable="true">
+                    <f:selectItem itemLabel="Select One" itemValue="" />
+                    <f:selectItems value="#{articleCategoryController.list}"
+                                   var="articleCategory"
+                                   itemLabel="#{articleCategory.name}"
+                                   itemValue="#{articleCategory}"/>
+                </p:selectOneMenu>
+
+                <h:outputLabel value="Notes" />
+                <p:inputTextarea  value="#{articleCategoryController.selectedObject.notes}"
+                                  cols="100" rows="15"/>
+
+                <h:outputLabel value="Created date" />
+                <p:outputLabel  value="#{articleCategoryController.selectedObject.createdDate}"/>
+
+                <h:outputLabel value="Valid to date" />
+                <p:inputText value="#{articleCategoryController.selectedObject.endDate}" />
+
+            </p:panelGrid>
+            <p:commandButton value="Cancel"
+                             action="#{articleCategoryController.cancel}"
+                             process="@all"
+                             update="@all"
+                             icon="ui-icon-disk" />
+            <p:commandButton value="#{articleCategoryController.editButtonCaption}"
+                             action="#{articleCategoryController.save}"
+                             process="@all"
+                             update="@all"
+                             icon="ui-icon-disk" />
+        </p:panel>
+    </ui:define>
+</ui:composition>

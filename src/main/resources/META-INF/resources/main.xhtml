@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <f:facet name="first">
+        <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+        <title>Main view</title>
+    </f:facet>
+    <style type="text/css">
+        .ui-widget, .ui-widget .ui-widget {
+            font-size:9px !important;
+            font-family: Verdana,Arial,sans-serif;
+        }
+    </style>
+</h:head>
+
+<h:body>
+
+    <h:form id="form">
+        <p:growl id="growl" showDetail="true" sticky="true"/>
+
+        <p:layout fullPage="true" >
+            <p:layoutUnit position="north" size="50" resizable="true" closable="true" collapsible="true"
+                          rendered="false">
+
+            </p:layoutUnit>
+
+            <p:layoutUnit position="south" size="25" closable="true" collapsible="true">
+                <p:growl id="messages"/>
+                Footer
+            </p:layoutUnit>
+
+            <p:layoutUnit position="center">
+                <p:menubar>
+
+                    <p:submenu label="Sales"
+                               icon="ui-icon-document">
+                        <p:menuitem value="Order"
+                                    icon="ui-icon-close"
+                                    outcome="orderList"
+                        >
+                        </p:menuitem>
+                        <p:menuitem value="Item"
+                                    icon="ui-icon-close"
+                                    outcome="itemList"
+                        >
+                        </p:menuitem>
+                    </p:submenu>
+
+                    <p:submenu label="Articles"
+                               icon="ui-icon-document">
+                        <p:menuitem value="Article"
+                                    icon="ui-icon-close"
+                                    outcome="articleList"
+                        >
+                        </p:menuitem>
+                        <p:menuitem value="Article Type"
+                                    icon="ui-icon-close"
+                                    outcome="articletypeList"
+                        >
+                        </p:menuitem>
+                        <p:menuitem value="Article Categoty"
+                                    icon="ui-icon-close"
+                                    outcome="articlecategoryList"
+                        >
+                        </p:menuitem>
+                        <p:menuitem value="Unit Of Measure"
+                                    icon="ui-icon-close"
+                                    outcome="unitofmeasureList"
+                        >
+                        </p:menuitem>
+                    </p:submenu>
+
+                    <p:submenu label="Units"
+                               icon="ui-icon-document">
+                        <p:menuitem value="Client"
+                                    icon="ui-icon-close"
+                                    outcome="clientList"/>
+                        <p:menuitem value="Provider"
+                                    icon="ui-icon-close"
+                                    outcome="providerList"/>
+                        <p:menuitem value="Unit"
+                                    icon="ui-icon-close"
+                                    outcome="unitList"
+                        >
+                        </p:menuitem>
+                        <p:menuitem value="Person"
+                                    icon="ui-icon-close"
+                                    outcome="personList"
+                        >
+                        </p:menuitem>
+                        <p:menuitem value="Unit Industry"
+                                    icon="ui-icon-close"
+                                    outcome="unitindustryList"
+                        >
+                        </p:menuitem>
+                        <p:menuitem value="Unit Type"
+                                    icon="ui-icon-close"
+                                    outcome="unittypeList"
+                        >
+                        </p:menuitem>
+                    </p:submenu>
+
+                    <p:submenu label="Inventories"
+                               icon="ui-icon-document">
+                        <p:menuitem value="Inventory"
+                                    icon="ui-icon-close"
+                                    outcome="inventoryList"
+                        >
+                        </p:menuitem>
+                        <p:menuitem value="Inventory Type"
+                                    icon="ui-icon-close"
+                                    outcome="inventorytypeList"
+                        >
+                        </p:menuitem>
+                        <p:menuitem value="Inventory Status"
+                                    icon="ui-icon-close"
+                                    outcome="inventorystatusList"
+                        >
+                        </p:menuitem>
+                    </p:submenu>
+
+                    <p:submenu label="Statistic"
+                               icon="ui-icon-document">
+                        <p:menuitem value="Dashboard"
+                                    icon="ui-icon-close"
+                                    outcome="dashboard"
+                        >
+                        </p:menuitem>
+                    </p:submenu>
+
+                    <p:submenu label="Settings" icon="ui-icon-document">
+                        <p:menuitem value="Dashboards"
+                                    icon="ui-icon-close"
+                                    outcome="dashboardList"
+
+                        >
+                        </p:menuitem>
+                        <p:menuitem value="Chart type"
+                                    icon="ui-icon-close"
+                                    outcome="charttypeList"
+                        >
+                        </p:menuitem>
+                        <p:menuitem value="Message type"
+                                    icon="ui-icon-close"
+                                    outcome="messagetypeList"
+                        >
+                        </p:menuitem>
+                    </p:submenu>
+
+                </p:menubar>
+
+                <ui:insert name="general_content" />
+
+            </p:layoutUnit>
+
+        </p:layout>
+
+    </h:form>
+
+</h:body>
+
+</html>
+

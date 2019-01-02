@@ -1,0 +1,253 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="main.xhtml"
+>
+
+    <ui:define name="general_content">
+
+        <p:panel header="Order">
+            <p:panelGrid columns="2" id="orderItemPanel">
+
+                <h:outputLabel value="ID" />
+                <p:outputLabel value="#{orderController.selectedObject.id}"/>
+
+                <h:outputLabel value="Logical ID" />
+                <p:outputLabel value="#{orderController.selectedObject.logicalId}"/>
+
+                <h:outputLabel value="Type" />
+                <p:selectOneMenu value="#{orderController.selectedObject.orderType}"
+                                 converter="orderTypeConverter"
+                                 effect="fold"
+                                 editable="true">
+                    <f:selectItem itemLabel="Select One" itemValue="" />
+                    <f:selectItems value="#{orderTypeController.list}"
+                                   var="orderType"
+                                   itemLabel="#{orderType.name}"
+                                   itemValue="#{orderType}"/>
+                </p:selectOneMenu>
+
+                <h:outputLabel value="Status" />
+                <p:selectOneMenu value="#{orderController.selectedObject.orderStatus}"
+                                 converter="orderStatusConverter"
+                                 effect="fold"
+                                 editable="true">
+                    <f:selectItem itemLabel="Select One" itemValue="" />
+                    <f:selectItems value="#{orderStatusController.list}"
+                                   var="orderStatus"
+                                   itemLabel="#{orderStatus.name}"
+                                   itemValue="#{orderStatus}"/>
+                </p:selectOneMenu>
+
+                <h:outputLabel value="Client" />
+                <p:selectOneMenu value="#{orderController.selectedObject.unit}"
+                                 converter="unitConverter"
+                                 effect="fold"
+                                 editable="true">
+                    <f:selectItem itemLabel="Select One" itemValue="" />
+                    <f:selectItems value="#{unitController.clientList}"
+                                   var="unit"
+                                   itemLabel="#{unit.name}"
+                                   itemValue="#{unit}"/>
+                </p:selectOneMenu>
+
+                <h:outputLabel value="Item list" />
+                <p:panelGrid columns="1">
+                    <p:dataTable id="orderItemDatatable"
+                                 var="item"
+                                 value="#{orderController.selectedObject.items}"
+                                 editable="true"
+                                 editMode="row">
+
+                        <p:column headerText="Options">
+                            <p:rowEditor saveTitle=""/>
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Category" />
+                            </f:facet>
+                            <p:cellEditor>
+                                <f:facet name="output">
+                                    <h:outputText value="#{item.articleCategory}" />
+                                </f:facet>
+                                <f:facet name="input">
+                                    <p:selectOneMenu value="#{item.articleCategory}"
+                                                     converter="articleCategoryConverter"
+                                                     effect="fold"
+                                                     editable="true">
+                                        <p:ajax update="selecteArticleItem"
+                                        />
+                                        <f:selectItem itemLabel="Select One" itemValue="" />
+                                        <f:selectItems value="#{articleCategoryController.list}"
+                                                       var="articleCategory"
+                                                       itemLabel="#{articleCategory.name}"
+                                                       itemValue="#{articleCategory}"/>
+                                    </p:selectOneMenu>
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Article" />
+                            </f:facet>
+                            <p:cellEditor>
+                                <f:facet name="output">
+                                    <h:outputText value="#{item.article}" />
+                                </f:facet>
+                                <f:facet name="input">
+                                    <p:selectOneMenu value="#{item.article}"
+                                                     id="selecteArticleItem"
+                                                     converter="articleConverter"
+                                                     effect="fold"
+                                                     editable="true">
+                                        <p:ajax update="itemArticleQuantity, itemArticleSalePrice, itemArticleUnitOfMeasure"/>
+                                        <f:selectItem itemLabel="Select One" itemValue="" />
+                                        <f:selectItems value="#{articleController.getArticleListByCategory(item.articleCategory)}"
+                                                       var="article"
+                                                       itemLabel="#{article.name}"
+                                                       itemValue="#{article}"/>
+                                    </p:selectOneMenu>
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>
+                        
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Unit Of Measure" />
+                            </f:facet>
+                            <p:cellEditor>
+                                <f:facet name="output">
+                                    <h:outputText value="#{item.article.unitOfMeasure}" />
+                                </f:facet>
+                                <f:facet name="input">
+                                    <h:outputText id="itemArticleUnitOfMeasure"
+                                                 value="#{item.article.unitOfMeasure}"/>
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Available Quantity" />
+                            </f:facet>
+                            <p:cellEditor>
+                                <f:facet name="output">
+                                    <h:outputText value="#{item.article.quantity}" />
+                                </f:facet>
+                                <f:facet name="input">
+                                    <p:inputText id="itemArticleQuantity" value="#{item.article.quantity}" />
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Article price" />
+                            </f:facet>
+                            <p:cellEditor>
+                                <f:facet name="output">
+                                    <h:outputText value="#{item.article.salePrice}" />
+                                </f:facet>
+                                <f:facet name="input">
+                                    <p:inputText id="itemArticleSalePrice" value="#{item.article.salePrice}"/>
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Sales price" />
+                            </f:facet>
+                            <p:cellEditor>
+                                <f:facet name="output">
+                                    <h:outputText value="#{item.saledPrice}" />
+                                </f:facet>
+                                <f:facet name="input">
+                                    <p:inputText value="#{item.saledPrice}"/>
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Quantity" />
+                            </f:facet>
+                            <p:cellEditor>
+                                <f:facet name="output">
+                                    <h:outputText value="#{item.quantity}" />
+                                </f:facet>
+                                <f:facet name="input">
+                                    <p:inputText value="#{item.quantity}"
+                                        valueChangeListener="#{orderController.onItemChange}">
+                                        <p:ajax event="keyup" update="itemTotalPrice"/>
+                                    </p:inputText>
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Total" />
+                            </f:facet>
+                            <p:cellEditor>
+                                <f:facet name="output">
+                                    <h:outputText value="#{item.totalPrice}" />
+                                </f:facet>
+                                <f:facet name="input">
+                                    <p:inputText id="itemTotalPrice"
+                                                 value="#{item.totalPrice}"/>
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>
+
+                    </p:dataTable>
+
+                    <p:commandButton value="Add"
+                                     actionListener="#{orderController.addItem}"
+                                     update="orderItemPanel"
+                                     icon="ui-icon-disk"
+                    />
+
+                </p:panelGrid>
+
+                <h:outputLabel value="Total sum" />
+                <p:inputText  value="#{orderController.selectedObject.totalPrice}"/>
+
+                <h:outputLabel value="Total units" />
+                <p:inputText  value="#{orderController.selectedObject.totalUnit}"/>
+
+                <h:outputLabel value="Delivery address" />
+                <p:inputTextarea  value="#{orderController.selectedObject.deliveryAddress}"
+                                    cols="100" rows="15"/>
+
+                <h:outputLabel value="Name" />
+                <p:inputText  value="#{orderController.selectedObject.name}"/>
+
+                <h:outputLabel value="Notes" />
+                <p:inputTextarea  value="#{orderController.selectedObject.notes}"
+                                  cols="100" rows="15"/>
+
+                <h:outputLabel value="Created date" />
+                <p:outputLabel  value="#{orderController.selectedObject.createdDate}"/>
+
+                <h:outputLabel value="Valid to date" />
+                <p:inputText value="#{orderController.selectedObject.endDate}" />
+
+            </p:panelGrid>
+            <p:commandButton value="Cancel"
+                             action="#{orderController.cancel}"
+                             process="@all"
+                             update="@all"
+                             icon="ui-icon-disk" />
+            <p:commandButton value="#{orderController.editButtonCaption}"
+                             action="#{orderController.save}"
+                             process="@all"
+                             update="@all"
+                             icon="ui-icon-disk" />
+        </p:panel>
+    </ui:define>
+</ui:composition>

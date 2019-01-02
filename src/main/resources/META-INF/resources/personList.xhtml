@@ -1,0 +1,103 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="main.xhtml"
+>
+
+    <ui:define name="general_content">
+
+        <p:panel header="Person list">
+
+            <p:dataTable id="personTable"
+                         binding="#{table}"
+                         value="#{personController.list}"
+                         var="person"
+                         class="table table-striped table-hover table-bordered tableUpdated"
+                         rows="10"
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown} {Exporters}"
+                         rowsPerPageTemplate="5,10,25,50"
+                         sortMode="multiple"
+                         emptyMessage="No person found">
+
+                <f:facet name="{Exporters}">
+                    <h:commandLink>
+                        <h:graphicImage value="/images/icon/excel-icon.png" width="24"/>
+                        <p:dataExporter type="xls" target="personTable" fileName="persons" />
+                    </h:commandLink>
+
+                    <h:commandLink>
+                        <h:graphicImage value="/images/icon/csv-icon.png" width="24"/>
+                        <p:dataExporter type="csv" target="personTable" fileName="persons" />
+                    </h:commandLink>
+
+                    <h:commandLink>
+                        <h:graphicImage value="/images/icon/xml-icon.png" width="24"/>
+                        <p:dataExporter type="xml" target="personTable" fileName="persons" />
+                    </h:commandLink>
+                </f:facet>
+
+                <p:column>
+                    <f:facet name="header">Id</f:facet>
+                    <h:outputText value="#{table.rowIndex + 1}" />
+                </p:column>
+                <p:column>
+                    <f:facet name="header">First name</f:facet>
+                    <h:outputText value="#{person.firstName}" />
+                </p:column>
+
+                <p:column>
+                    <f:facet name="header">Last name</f:facet>
+                    <h:outputText value="#{person.lastName}" />
+                </p:column>
+
+                <p:column>
+                    <f:facet name="header">Phone</f:facet>
+                    <h:outputText value="#{person.phone}" />
+                </p:column>
+
+                <p:column>
+                    <f:facet name="header">Email</f:facet>
+                    <h:outputText value="#{person.email}" />
+                </p:column>
+
+                <p:column>
+                    <f:facet name="header">Fax</f:facet>
+                    <h:outputText value="#{person.fax }" />
+                </p:column>
+
+                <p:column>
+                    <f:facet name="header">Notes</f:facet>
+                    <h:outputText value="#{person.notes}" />
+                </p:column>
+                <p:column>
+                    <f:facet name="header">Created date</f:facet>
+                    <h:outputText value="#{person.createdDate}" />
+                </p:column>
+                <p:column>
+                    <f:facet name="header">Valid to date</f:facet>
+                    <h:outputText value="#{person.endDate}" />
+                </p:column>
+                <p:column>
+                    <f:facet name="header">Update</f:facet>
+                    <h:commandButton action="#{personController.edit(person)}"
+                                     value="Edit"/>
+                </p:column>
+                <p:column>
+                    <f:facet name="header">Delete</f:facet>
+                    <h:commandButton action="#{personController.remove(person)}"
+                                     value="Delete"
+                                     class="btn btn-danger"/>
+                </p:column>
+            </p:dataTable>
+
+            <p:commandButton action="personView"
+                             value="Create New Person"
+                             class="btn btn-success btnSpace" />
+
+        </p:panel>
+
+    </ui:define>
+</ui:composition>

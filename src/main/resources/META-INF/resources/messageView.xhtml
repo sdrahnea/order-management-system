@@ -1,0 +1,61 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="main.xhtml"
+>
+
+    <ui:define name="general_content">
+
+        <p:panel header="Message">
+            <p:panelGrid columns="2" id="messagePanel">
+
+                <h:outputLabel value="ID" />
+                <p:outputLabel value="#{messageController.selectedObject.id}"/>
+
+                <h:outputLabel value="Type" />
+                <p:selectOneMenu value="#{messageController.selectedObject.messageType}"
+                                 converter="messageTypeConverter"
+                                 effect="fold"
+                                 editable="true">
+                    <f:selectItem itemLabel="Select One" itemValue="" />
+                    <f:selectItems value="#{messageTypeController.list}"
+                                   var="messageType"
+                                   itemLabel="#{messageType.name}"
+                                   itemValue="#{messageType}"/>
+                </p:selectOneMenu>
+
+                <h:outputLabel value="Email" />
+                <p:inputText  value="#{messageController.selectedObject.email}"/>
+
+                <h:outputLabel value="Phone" />
+                <p:inputText  value="#{messageController.selectedObject.phone}"/>
+
+                <h:outputLabel value="Name" />
+                <p:inputText  value="#{messageController.selectedObject.name}"/>
+
+                <h:outputLabel value="Notes" />
+                <p:inputTextarea  value="#{messageController.selectedObject.notes}"
+                                  cols="100" rows="15"/>
+
+                <h:outputLabel value="Created date" />
+                <p:outputLabel  value="#{messageController.selectedObject.createdDate}"/>
+
+                <h:outputLabel value="Valid to date" />
+                <p:inputText value="#{messageController.selectedObject.endDate}" />
+
+            </p:panelGrid>
+            <p:commandButton value="Cancel"
+                             action="#{messageController.cancel}"
+                             process="@all"
+                             update="@all"
+                             icon="ui-icon-disk" />
+            <p:commandButton value="#{messageController.editButtonCaption}"
+                             action="#{messageController.save}"
+                             process="@all"
+                             update="@all"
+                             icon="ui-icon-disk" />
+        </p:panel>
+    </ui:define>
+</ui:composition>

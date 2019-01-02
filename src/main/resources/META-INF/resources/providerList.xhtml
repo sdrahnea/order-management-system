@@ -1,0 +1,120 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="main.xhtml"
+>
+
+    <ui:define name="general_content">
+
+        <p:panel header="Provider list">
+
+            <p:dataTable id="clientTable"
+                         binding="#{table}"
+                         value="#{unitController.providerList}"
+                         var="unit"
+                         class="table table-striped table-hover table-bordered tableUpdated"
+                         rows="10"
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown} {Exporters}"
+                         rowsPerPageTemplate="5,10,25,50"
+                         sortMode="multiple"
+                         emptyMessage="No unit found">
+                
+                <f:facet name="{Exporters}">
+                    <h:commandLink>
+                        <h:graphicImage value="/images/icon/excel-icon.png" width="24"/>
+                        <p:dataExporter type="xls" target="clientTable" fileName="clients" />
+                    </h:commandLink>
+
+                    <h:commandLink>
+                        <h:graphicImage value="/images/icon/csv-icon.png" width="24"/>
+                        <p:dataExporter type="csv" target="clientTable" fileName="clients" />
+                    </h:commandLink>
+
+                    <h:commandLink>
+                        <h:graphicImage value="/images/icon/xml-icon.png" width="24"/>
+                        <p:dataExporter type="xml" target="clientTable" fileName="clients" />
+                    </h:commandLink>
+                </f:facet>
+                
+                <p:column>
+                    <f:facet name="header">Id</f:facet>
+                    <h:outputText value="#{table.rowIndex + 1}" />
+                </p:column>
+                
+                <p:column sortBy="#{unit.name}">
+                    <f:facet name="header">Name</f:facet>
+                    <h:outputText value="#{unit.name}" />
+                </p:column>
+
+                <p:column sortBy="#{unit.type}">
+                    <f:facet name="header">Type</f:facet>
+                    <h:outputText value="#{unit.unitType}" />
+                </p:column>
+
+                <p:column sortBy="#{unit.unitIndustry}">
+                    <f:facet name="header">Industry</f:facet>
+                    <h:outputText value="#{unit.unitIndustry}" />
+                </p:column>
+
+                <p:column>
+                    <f:facet name="header">Address</f:facet>
+                    <h:outputText value="#{unit.address}" />
+                </p:column>
+
+                <p:column sortBy="#{unit.email}">
+                    <f:facet name="header">Email</f:facet>
+                    <h:outputText value="#{unit.email}" />
+                </p:column>
+
+                <p:column sortBy="#{unit.phone}">
+                    <f:facet name="header">Phone</f:facet>
+                    <h:outputText value="#{unit.phone}" />
+                </p:column>
+
+                <p:column sortBy="#{unit.fax}">
+                    <f:facet name="header">Fax</f:facet>
+                    <h:outputText value="#{unit.fax}" />
+                </p:column>
+
+                <p:column>
+                    <f:facet name="header">Additional info</f:facet>
+                    <h:outputText value="#{unit.additionalInfo}" />
+                </p:column>
+
+                <p:column>
+                    <f:facet name="header">Notes</f:facet>
+                    <h:outputText value="#{unit.notes}" />
+                </p:column>
+                
+                <p:column sortBy="#{unit.createdDate}">
+                    <f:facet name="header">Created date</f:facet>
+                    <h:outputText value="#{unit.createdDate}" />
+                </p:column>
+                <p:column>
+                    <f:facet name="header">Valid to date</f:facet>
+                    <h:outputText value="#{unit.endDate}" />
+                </p:column>
+                <p:column>
+                    <f:facet name="header">Update</f:facet>
+                    <h:commandButton action="#{unitController.edit(unit)}"
+                                     value="Edit"/>
+                </p:column>
+                <p:column>
+                    <f:facet name="header">Delete</f:facet>
+                    <h:commandButton action="#{unitController.remove(unit)}"
+                                     value="Delete"
+                                     class="btn btn-danger"/>
+                </p:column>
+            </p:dataTable>
+
+            <h:commandButton action="unitView"
+                             value="Create New Client"
+                             class="btn btn-success btnSpace" />
+
+        </p:panel>
+
+    </ui:define>
+</ui:composition>
