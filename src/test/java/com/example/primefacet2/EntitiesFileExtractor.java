@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 public class EntitiesFileExtractor {
 
     public static void main(String[] args) throws IOException {
-        getSql("skill","name","/Users/iocojocari/Downloads/skills.txt");
+        getSql("skill","name","/Users/ioc/Downloads/skills.txt");
     }
 
     public static String readText(String path) throws IOException {
