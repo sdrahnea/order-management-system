@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 public class EntitiesFileExtractor {
 
     public static void main(String[] args) throws IOException {
-        getSql("skill","name","/Users/iocojocari/Downloads/skills.txt");
+        getSql("skill","name","/Users/ioc/Downloads/skills.txt");
     }
 
     public static String readText(String path) throws IOException {
@@ -33,15 +33,6 @@ public class EntitiesFileExtractor {
         data.split("\n");
         Set<String> unique=new HashSet(Arrays.asList(data.split("\n")));
         List<String> sqlData =unique.stream()
-//                .filter(s->!s.isEmpty()).map(s->
-//                {
-//                    if(s.substring(s.length()-1).equals(":")){
-//                        return s.substring(0,s.length()-1);
-//                    }else{
-//                        return s;
-//                    }
-//                }
-//        ).
                         .map(s->"('" +s.toUpperCase()+"')").collect(Collectors.toList());
         String sql="INSERT INTO "+tableName+"("+rowName+") VALUES "+String.join(",",sqlData);
         System.out.println(sql);
