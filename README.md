@@ -1,56 +1,47 @@
-# Project Title
+# Order Management System
 
-One Paragraph of project description goes here
+Order Management System helps you to manage the business activity of your entity. The menus are: orders, items, articles, clients, providers, dashboards.
+You can create your custom dashboards using native sql scrips. Basic operation for all entities. 
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+Clone or download a copy of this project.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
+This project requires MySQL and Java 1.8.
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
+After MySQL instalation, it is required to create a dabase:
 
 ```
-Give the example
+CREATE DATABSE oms;
 ```
-
-And repeat
-
+Execute the content of `.sql` files, such as: 
 ```
-until finished
+article.sql
+article_category.sql
+article_type.sql
+chart_type.sql
+dashboard_query.sql
+data.sql
+first_name.sql
+inventory.sql
+inventory_status.sql
+inventory_type.sql
+last_name.sql
+unit_industry.sql
+unit_of_measure.sql
+unit_type.sql
 ```
+All this files contains initial data. Just copy and paste the file's content. 
+Create the build:
 
-End with an example of getting some data out of the system or using it for a little demo
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
+This project does not have any kind of tests :).
 
 ## Deployment
 
