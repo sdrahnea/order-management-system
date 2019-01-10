@@ -92,12 +92,6 @@ SDR:order-management-system sdrahnea$ mvn clean compile package
 [INFO] ------------------------------------------------------------------------
 SDR:order-management-system sdrahnea$ 
 ```
-Once the build (the jar file) is ready the application can be run. Please, use the following command to run the application:
-```
-SDR:order-management-system sdrahnea$ java -jar target/order-management-system-0.0.1-SNAPSHOT.jar
-```
-If was used default configurtion then the application should be available at this url: http://localhost:8081/oms/login.xhtml 
-Use the following credentials: username: admin, password: 123.
 
 ## Running the tests
 
@@ -105,17 +99,27 @@ This project does not have any kind of tests :).
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+Once the build (the jar file) is ready the application can be run. Please, use the following command to run the application:
+```
+SDR:order-management-system sdrahnea$ java -jar target/order-management-system-0.0.1-SNAPSHOT.jar
+```
+If was used default configuration then the application should be available at this url: http://localhost:8081/oms/login.xhtml 
+Use the following credentials: username: admin, password: 123.
 
 ## Built With
 
-* [PrimeFaces](https://www.primefaces.org/) - The web framework used
-* [Spring Framework](https://spring.io/) - The back-end framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
+* [Java](https://www.java.com/en/download/) - Java technology allows you to work and play in a secure computing environment. Java allows you to play online games, chat with people around the world, calculate your mortgage interest, and view images in 3D, just to name a few.
+* [PrimeFaces](https://www.primefaces.org/) - PrimeFaces is a popular open source framework for JavaServer Faces featuring over 100 components, touch optimized mobilekit, client side validation, theme engine and more.
+* [Spring Security](https://spring.io/projects/spring-security) - Spring Security is a powerful and highly customizable authentication and access-control framework. It is the de-facto standard for securing Spring-based applications.
+* [Spring Boot](https://spring.io/projects/spring-boot) - Spring Boot makes it easy to create stand-alone, production-grade Spring based Applications that you can "just run".
+* [Spring Data](https://spring.io/projects/spring-data) - Spring Data’s mission is to provide a familiar and consistent, Spring-based programming model for data access while still retaining the special traits of the underlying data store.
+* [Spring Data JPA](https://spring.io/projects/spring-data-jpa) - Spring Data JPA, part of the larger Spring Data family, makes it easy to easily implement JPA based repositories. This module deals with enhanced support for JPA based data access layers. It makes it easier to build Spring-powered applications that use data access technologies.
+* [MySQL](https://www.mysql.com/) - MySQL is the world's most popular open source database. Whether you are a fast growing web property, technology ISV or large enterprise, MySQL can cost-effectively help you deliver high performance, scalable database applications.
+* [Maven](https://maven.apache.org/) - Apache Maven is a software project management and comprehension tool. Based on the concept of a project object model (POM), Maven can manage a project's build, reporting and documentation from a central piece of information. 
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Versioning
 
@@ -130,8 +134,5 @@ We use [SemVer](http://semver.org/) for versioning.
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Donation
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* [PayPal](https://www.paypal.me/sdrahnea) - any donation is welcomed in case that you was pleased with this work :p
 
