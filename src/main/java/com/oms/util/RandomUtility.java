@@ -4,8 +4,8 @@ import java.util.Random;
 
 public class RandomUtility {
 
-  private final static String [] vocaleChars = {"e", "y", "u", "i", "o", "a"};
-  private final static String [] consonantChars = {"q", "w", "r", "t", "p", "s", "d", "f", "g", "h", "j", "k", "l", "z", "x", "c", "v", "b", "n", "m"};
+  private final static String [] VOCALE_CHARS = {"e", "y", "u", "i", "o", "a"};
+  private final static String [] CONSONAT_CHARS = {"q", "w", "r", "t", "p", "s", "d", "f", "g", "h", "j", "k", "l", "z", "x", "c", "v", "b", "n", "m"};
 
   public static String generatePhone(){
     return generatePhone(0);
@@ -29,14 +29,14 @@ public class RandomUtility {
     minLength = (minLength == 0) ? 3 : minLength;
     maxLength = (maxLength == 0) ? 11 : maxLength;
     int wordLength = generateNumber(minLength, maxLength);
-    int vlength = vocaleChars.length;
-    int clength = consonantChars.length;
+    int vlength = VOCALE_CHARS.length;
+    int clength = CONSONAT_CHARS.length;
 
     String word = "";
     for (int i = 0; i < wordLength; i++){
       int vi = generateNumber(0, vlength);
       int ci = generateNumber(0, clength);
-      word += (consonantChars[ci] + vocaleChars[vi]);
+      word += (CONSONAT_CHARS[ci] + VOCALE_CHARS[vi]);
     }
     return word;
   }
