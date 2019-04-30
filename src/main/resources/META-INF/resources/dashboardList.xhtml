@@ -10,7 +10,7 @@
 
         <p:panel header="Dashboard list">
 
-            <h:dataTable id="dashboardTable"
+            <p:dataTable id="dashboardTable"
                          binding="#{table}"
                          value="#{dashboardController.list}"
                          var="dashboard"
@@ -72,7 +72,7 @@
                     <h:outputText value="#{dashboard.showColumn}" />
                 </p:column>
                 <p:column>
-                    <f:facet name="header">Legen position</f:facet>
+                    <f:facet name="header">Legend position</f:facet>
                     <h:outputText value="#{dashboard.legendPosition}" />
                 </p:column>
                 <p:column>
@@ -106,7 +106,7 @@
                                      value="Delete"
                                      class="btn btn-danger"/>
                 </p:column>
-            </h:dataTable>
+            </p:dataTable>
 
             <h:commandButton action="dashboardView"
                              value="Create New Dashboard"
