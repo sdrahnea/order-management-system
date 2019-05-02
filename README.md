@@ -3,6 +3,18 @@
 Order Management System helps you to manage the business activity of your entity. The menus are: orders, items, articles, clients, providers, dashboards.
 You can create your custom dashboards using native sql scrips. Basic operations for all entities. 
 
+## Summary
+* Getting Started (Prerequisites, Installing)
+* Running the tests
+* Deployment
+* Built With
+* Do you have any issue?
+* Contributing
+* Versioning
+* Authors
+* License
+* Donation
+
 ## Getting Started
 
 Clone or download a copy of this project.
