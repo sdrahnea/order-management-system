@@ -18,6 +18,14 @@ You can create your custom dashboards using native sql scrips. Basic operations 
 ## Getting Started
 
 Clone or download a copy of this project.
+Open the terminal and write the following command:
+```
+git clone https://github.com/sdrahnea/order-management-system.git
+```
+Config the git locally, in case you use different git's users:
+```
+git config --local user.email "your_email@domain.extension"
+```
 
 ### Prerequisites
 
