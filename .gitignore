@@ -2,3 +2,4 @@
 # Default ignored files
 /.idea/*
 /*.iml
+/target/*

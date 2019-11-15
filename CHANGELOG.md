@@ -3,6 +3,11 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [0.0.3-SNAPSHOT] - 2019-11-15
+### Fixed
+- add gitignore file
+- add lombok version 
+
 ## [0.0.2-SNAPSHOT] - 2019-04-30
 ### Removed
 - unsused CSS files 
