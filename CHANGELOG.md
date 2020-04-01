@@ -3,6 +3,12 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [0.0.4-SNAPSHOT] - in development
+### Fixed
+- NPE in case of order creation
+- NPE in case of article creation
+- NPE in case of client creation
+
 ## [0.0.3-SNAPSHOT] - 2019-11-15
 ### Fixed
 - add gitignore file
