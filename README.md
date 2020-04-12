@@ -4,6 +4,7 @@ Order Management System helps you to manage the business activity of your entity
 You can create your custom dashboards using native sql scrips. Basic operations for all entities. 
 
 ## Summary
+* Screenshots
 * Getting Started (Prerequisites, Installing)
 * Running the tests
 * Deployment
@@ -14,7 +15,21 @@ You can create your custom dashboards using native sql scrips. Basic operations 
 * Authors
 * License
 * Donation
-* Screenshots
+
+## Screenshots
+<img src = "/src/main/resources/screenshots/oms-login-page.png">
+<img src = "/src/main/resources/screenshots/oms-main-page.png">
+<img src = "/src/main/resources/screenshots/oms-items-list.png">
+<img src = "/src/main/resources/screenshots/oms-item-create.png">
+<img src = "/src/main/resources/screenshots/oms-article-create.png">
+<img src = "/src/main/resources/screenshots/oms-create-article.png">
+<img src = "/src/main/resources/screenshots/oms-create-new-item.png">
+<img src = "/src/main/resources/screenshots/oms-inventory-create-page.png">
+<img src = "/src/main/resources/screenshots/oms-order-create.png">
+<img src = "/src/main/resources/screenshots/oms-person-create.png">
+<img src = "/src/main/resources/screenshots/oms-unit-create.png">
+<img src = "/src/main/resources/screenshots/oms-unit-of-measure-create.png">
+<img src = "/src/main/resources/screenshots/oms-unit-type-create.png">
 
 ## Getting Started
 
@@ -165,18 +180,3 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Donation
 * [PayPal](https://www.paypal.me/sdrahnea) - any donation is welcomed in case that you was pleased with this work :p
-
-## Screenshots
-<img src = "/src/main/resources/screenshots/oms-login-page.png">
-<img src = "/src/main/resources/screenshots/oms-main-page.png">
-<img src = "/src/main/resources/screenshots/oms-items-list.png">
-<img src = "/src/main/resources/screenshots/oms-item-create.png">
-<img src = "/src/main/resources/screenshots/oms-article-create.png">
-<img src = "/src/main/resources/screenshots/oms-create-article.png">
-<img src = "/src/main/resources/screenshots/oms-create-new-item.png">
-<img src = "/src/main/resources/screenshots/oms-inventory-create-page.png">
-<img src = "/src/main/resources/screenshots/oms-order-create.png">
-<img src = "/src/main/resources/screenshots/oms-person-create.png">
-<img src = "/src/main/resources/screenshots/oms-unit-create.png">
-<img src = "/src/main/resources/screenshots/oms-unit-of-measure-create.png">
-<img src = "/src/main/resources/screenshots/oms-unit-type-create.png">
