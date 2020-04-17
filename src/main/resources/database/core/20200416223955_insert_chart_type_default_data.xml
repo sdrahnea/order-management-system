@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="20200416223955_insert_chart_type_default_data" author="sdrahnea" failOnError="true">
+        <sql>
+            INSERT INTO chart_type(name, ui_type) VALUES('BarChartModel', 'bar');
+            INSERT INTO chart_type(name, ui_type) VALUES('HorizontalBarChartModel', 'bar');
+            INSERT INTO chart_type(name, ui_type) VALUES('PieChartModel', 'pie');
+
+            UPDATE chart_type SET created_date = NOW();
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

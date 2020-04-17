@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="20200416224935_insert_inventory_status_default_data" author="sdrahnea" failOnError="true">
+        <sql>
+            INSERT INTO inventory_status(name) VALUES('New');
+            INSERT INTO inventory_status(name) VALUES('Active');
+            INSERT INTO inventory_status(name) VALUES('Consumed');
+            INSERT INTO inventory_status(name) VALUES('Inactive');
+            INSERT INTO inventory_status(name) VALUES('Destroyed');
+            INSERT INTO inventory_status(name) VALUES('Sold');
+
+            UPDATE inventory_status SET created_date = NOW();
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

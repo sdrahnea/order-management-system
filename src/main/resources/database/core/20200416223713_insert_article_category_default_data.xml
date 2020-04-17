@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="20200416223713_insert_article_category_default_data" author="sdrahnea" failOnError="true">
+        <sql>
+            INSERT INTO article_category(name) VALUES('Fruits');
+            INSERT INTO article_category(name) VALUES('Vegetables');
+            INSERT INTO article_category(name) VALUES('Animals');
+
+            UPDATE article SET article_category_id = (SELECT id FROM article_category WHERE name = 'Fruits')
+                WHERE id between 1 AND 33;
+            UPDATE article SET article_category_id = (SELECT id FROM article_category WHERE name = 'Vegetables')
+                WHERE id between 34 AND 65;
+            UPDATE article SET article_category_id = (SELECT id FROM article_category WHERE name = 'Animals')
+                WHERE id between 66 AND 117;
+
+            UPDATE article_category SET created_date = NOW();
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

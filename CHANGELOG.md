@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 
 ## [0.0.4-SNAPSHOT] - in development
+### Added
+- add liquibase as database migration tool
+
 ### Fixed
 - NPE in case of order creation
 - NPE in case of article creation

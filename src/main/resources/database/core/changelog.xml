@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <include file="20200416223544_insert_articles_default_data.xml" relativeToChangelogFile="true" />
+    <include file="20200416223713_insert_article_category_default_data.xml" relativeToChangelogFile="true" />
+    <include file="20200416223823_insert_article_type_default_data.xml" relativeToChangelogFile="true" />
+    <include file="20200416223955_insert_chart_type_default_data.xml" relativeToChangelogFile="true" />
+<!--    <include file="20200416224119_insert_dashboard_query_default_data.xml" relativeToChangelogFile="true" />-->
+    <include file="20200416224849_insert_first_name_default_data.xml" relativeToChangelogFile="true" />
+    <include file="20200416224911_insert_inventory_default_data.xml" relativeToChangelogFile="true" />
+    <include file="20200416224935_insert_inventory_status_default_data.xml" relativeToChangelogFile="true" />
+    <include file="20200416225102_insert_inventory_type_default_data.xml" relativeToChangelogFile="true" />
+    <include file="20200416225111_insert_last_name_default_data.xml" relativeToChangelogFile="true" />
+    <include file="20200416225431_insert_unit_industry_default_data.xml" relativeToChangelogFile="true" />
+    <include file="20200416225505_insert_unit_of_measure_default_data.xml" relativeToChangelogFile="true" />
+    <include file="20200416225715_insert_unit_type_default_data.xml" relativeToChangelogFile="true" />
+
+</databaseChangeLog>

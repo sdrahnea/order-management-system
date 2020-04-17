@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="20200416225431_insert_unit_industry_default_data" author="sdrahnea" failOnError="true">
+        <sql>
+            INSERT INTO unit_industry(name) VALUES('Consumer and Industrial Products');
+            INSERT INTO unit_industry(name) VALUES('Energy and Resources');
+            INSERT INTO unit_industry(name) VALUES('Financial Services');
+            INSERT INTO unit_industry(name) VALUES('Real Estate');
+            INSERT INTO unit_industry(name) VALUES('Life Sciences and Health Care');
+            INSERT INTO unit_industry(name) VALUES('Public Sector');
+            INSERT INTO unit_industry(name) VALUES('Technology, Media and Telecommunications');
+            INSERT INTO unit_industry(name) VALUES('Agriculture');
+
+            UPDATE unit_industry SET created_date = NOW();
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

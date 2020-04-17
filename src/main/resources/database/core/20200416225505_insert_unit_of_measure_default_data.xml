@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="20200416225505_insert_unit_of_measure_default_data" author="sdrahnea" failOnError="true">
+        <sql>
+            INSERT INTO unit_of_measure(name) VALUES('kg');
+            INSERT INTO unit_of_measure(name) VALUES('m');
+            INSERT INTO unit_of_measure(name) VALUES('ml');
+            INSERT INTO unit_of_measure(name) VALUES('m2');
+            INSERT INTO unit_of_measure(name) VALUES('m3');
+            INSERT INTO unit_of_measure(name) VALUES('piece');
+            INSERT INTO unit_of_measure(name) VALUES('pack');
+
+            UPDATE unit_of_measure SET created_date = NOW();
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

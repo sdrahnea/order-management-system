@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="20200416223544_insert_articles_default_data" author="sdrahnea" failOnError="true">
+        <sql>
+            -- insert fruits
+            INSERT INTO article(name) VALUES('apple');
+            INSERT INTO article(name) VALUES('apricot');
+            INSERT INTO article(name) VALUES('avocado');
+            INSERT INTO article(name) VALUES('banana');
+            INSERT INTO article(name) VALUES('blackberry');
+            INSERT INTO article(name) VALUES('blackcurrant');
+            INSERT INTO article(name) VALUES('blueberry');
+            INSERT INTO article(name) VALUES('boysenberry');
+            INSERT INTO article(name) VALUES('cherry');
+            INSERT INTO article(name) VALUES('coconut');
+            INSERT INTO article(name) VALUES('fig');
+            INSERT INTO article(name) VALUES('grape');
+            INSERT INTO article(name) VALUES('grapefruit');
+            INSERT INTO article(name) VALUES('kiwifruit');
+            INSERT INTO article(name) VALUES('lemon');
+            INSERT INTO article(name) VALUES('lime');
+            INSERT INTO article(name) VALUES('lychee');
+            INSERT INTO article(name) VALUES('mandarin');
+            INSERT INTO article(name) VALUES('mango');
+            INSERT INTO article(name) VALUES('melon');
+            INSERT INTO article(name) VALUES('nectarine');
+            INSERT INTO article(name) VALUES('orange');
+            INSERT INTO article(name) VALUES('papaya');
+            INSERT INTO article(name) VALUES('passion fruit ');
+            INSERT INTO article(name) VALUES('peach');
+            INSERT INTO article(name) VALUES('pear');
+            INSERT INTO article(name) VALUES('pineapple');
+            INSERT INTO article(name) VALUES('plum');
+            INSERT INTO article(name) VALUES('pomegranate');
+            INSERT INTO article(name) VALUES('quince');
+            INSERT INTO article(name) VALUES('raspberry');
+            INSERT INTO article(name) VALUES('strawberry');
+            INSERT INTO article(name) VALUES('watermelon');
+
+            -- insert vegetables
+            INSERT INTO article(name) VALUES('artichoke');
+            INSERT INTO article(name) VALUES('asparagus');
+            INSERT INTO article(name) VALUES('aubergine');
+            INSERT INTO article(name) VALUES('beet');
+            INSERT INTO article(name) VALUES('beetroot');
+            INSERT INTO article(name) VALUES('bell pepper');
+            INSERT INTO article(name) VALUES('broccoli');
+            INSERT INTO article(name) VALUES('Brussels sprout');
+            INSERT INTO article(name) VALUES('cabbage');
+            INSERT INTO article(name) VALUES('carrot');
+            INSERT INTO article(name) VALUES('cauliflower');
+            INSERT INTO article(name) VALUES('celery');
+            INSERT INTO article(name) VALUES('corn');
+            INSERT INTO article(name) VALUES('courgette');
+            INSERT INTO article(name) VALUES('cucumber');
+            INSERT INTO article(name) VALUES('eggplant');
+            INSERT INTO article(name) VALUES('green bean');
+            INSERT INTO article(name) VALUES('green onion');
+            INSERT INTO article(name) VALUES('leek');
+            INSERT INTO article(name) VALUES('lettuce');
+            INSERT INTO article(name) VALUES('mushroom');
+            INSERT INTO article(name) VALUES('onion');
+            INSERT INTO article(name) VALUES('pea');
+            INSERT INTO article(name) VALUES('pepper');
+            INSERT INTO article(name) VALUES('potato');
+            INSERT INTO article(name) VALUES('pumpkin');
+            INSERT INTO article(name) VALUES('radish');
+            INSERT INTO article(name) VALUES('spring onion');
+            INSERT INTO article(name) VALUES('squash');
+            INSERT INTO article(name) VALUES('sweet potato ');
+            INSERT INTO article(name) VALUES('tomato');
+            INSERT INTO article(name) VALUES('zucchini');
+
+            -- insert animals
+            INSERT INTO article(name) VALUES('alligator');
+            INSERT INTO article(name) VALUES('ant');
+            INSERT INTO article(name) VALUES('bear');
+            INSERT INTO article(name) VALUES('bee');
+            INSERT INTO article(name) VALUES('bird');
+            INSERT INTO article(name) VALUES('camel');
+            INSERT INTO article(name) VALUES('cat');
+            INSERT INTO article(name) VALUES('cheetah');
+            INSERT INTO article(name) VALUES('chicken');
+            INSERT INTO article(name) VALUES('chimpanzee');
+            INSERT INTO article(name) VALUES('cow');
+            INSERT INTO article(name) VALUES('crocodile');
+            INSERT INTO article(name) VALUES('deer');
+            INSERT INTO article(name) VALUES('dog');
+            INSERT INTO article(name) VALUES('dolphin');
+            INSERT INTO article(name) VALUES('duck');
+            INSERT INTO article(name) VALUES('eagle');
+            INSERT INTO article(name) VALUES('elephant');
+            INSERT INTO article(name) VALUES('fish');
+            INSERT INTO article(name) VALUES('fly');
+            INSERT INTO article(name) VALUES('fox');
+            INSERT INTO article(name) VALUES('frog');
+            INSERT INTO article(name) VALUES('giraffe');
+            INSERT INTO article(name) VALUES('goat');
+            INSERT INTO article(name) VALUES('goldfish');
+            INSERT INTO article(name) VALUES('hamster');
+            INSERT INTO article(name) VALUES('hippopotamus');
+            INSERT INTO article(name) VALUES('horse');
+            INSERT INTO article(name) VALUES('kangaroo');
+            INSERT INTO article(name) VALUES('kitten');
+            INSERT INTO article(name) VALUES('lion');
+            INSERT INTO article(name) VALUES('lobster');
+            INSERT INTO article(name) VALUES('monkey');
+            INSERT INTO article(name) VALUES('octopus');
+            INSERT INTO article(name) VALUES('owl');
+            INSERT INTO article(name) VALUES('panda');
+            INSERT INTO article(name) VALUES('pig');
+            INSERT INTO article(name) VALUES('puppy');
+            INSERT INTO article(name) VALUES('rabbit');
+            INSERT INTO article(name) VALUES('rat');
+            INSERT INTO article(name) VALUES('scorpion');
+            INSERT INTO article(name) VALUES('seal');
+            INSERT INTO article(name) VALUES('shark');
+            INSERT INTO article(name) VALUES('sheep');
+            INSERT INTO article(name) VALUES('snail');
+            INSERT INTO article(name) VALUES('snake');
+            INSERT INTO article(name) VALUES('spider');
+            INSERT INTO article(name) VALUES('squirrel');
+            INSERT INTO article(name) VALUES('tiger');
+            INSERT INTO article(name) VALUES('turtle');
+            INSERT INTO article(name) VALUES('wolf');
+            INSERT INTO article(name) VALUES('zebra');
+
+            UPDATE article SET created_date = NOW();
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>
