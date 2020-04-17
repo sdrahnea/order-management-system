@@ -6,11 +6,27 @@ All notable changes to this project will be documented in this file.
 ## [0.0.4-SNAPSHOT] - in development
 ### Added
 - add liquibase as database migration tool
+- default data for article category / type, chart type, inventory status / type, unit type, industry type 
 
 ### Fixed
 - NPE in case of order creation
 - NPE in case of article creation
 - NPE in case of client creation
+
+### Removed
+- article.sql
+- article_category.sql
+- article_type.sql
+- chart_type.sql
+- dashboard_query.sql
+- first_name.sql
+- inventory.sql
+- inventory_status.sql
+- inventory_type.sql
+- last_name.sql
+- unit_industry.sql
+- unit_of_measure.sql
+- unit_type.sql
 
 ## [0.0.3-SNAPSHOT] - 2019-11-15
 ### Fixed
