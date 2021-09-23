@@ -2,7 +2,7 @@
 All notable changes to this project will be documented in this file.
 
 ## [2.0.0] - 2021-MM-DD [Unreleased]
-- inventory of project and start to activily to support it
+- inventory of project and start to activily to support it. Should come with support and new implementations into few next weeks.
 
 ## [1.0.0] - 2021-09-23
 ### Added 
