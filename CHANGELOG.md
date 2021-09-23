@@ -1,9 +1,17 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [Unreleased]
+## [2.0.0] - 2021-MM-DD [Unreleased]
+- inventory of project and start to activily to support it
 
-## [0.0.4-SNAPSHOT] - in development
+## [1.0.0] - 2021-09-23
+### Added 
+- all implementation from 0.0.4-SNAPSHOT
+- all implementation from 0.0.3-SNAPSHOT
+- all implementation from 0.0.2-SNAPSHOT
+- all implementation from 0.0.1-SNAPSHOT
+
+## [0.0.4-SNAPSHOT]
 ### Added
 - add liquibase as database migration tool
 - default data for article category / type, chart type, inventory status / type, unit type, industry type 
