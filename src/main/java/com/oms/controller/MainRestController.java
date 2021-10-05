@@ -1,7 +1,7 @@
-package com.oms.controllers;
+package com.oms.controller;
 
 import com.oms.model.security.SecurityUser;
-import com.oms.services.impl.SecurityUserService;
+import com.oms.service.impl.SecurityUserService;
 import org.springframework.web.bind.annotation.*;
 
 /**
