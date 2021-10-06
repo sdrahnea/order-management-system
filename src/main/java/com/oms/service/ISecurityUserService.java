@@ -1,4 +1,4 @@
-package com.oms.services;
+package com.oms.service;
 
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
