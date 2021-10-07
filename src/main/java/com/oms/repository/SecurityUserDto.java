@@ -1,4 +1,4 @@
-package com.oms.repositories;
+package com.oms.repository;
 
 import com.oms.model.security.SecurityUser;
 import org.springframework.data.jpa.repository.JpaRepository;
