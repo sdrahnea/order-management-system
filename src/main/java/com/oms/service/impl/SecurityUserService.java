@@ -1,7 +1,7 @@
-package com.oms.services.impl;
+package com.oms.service.impl;
 
 import com.oms.model.security.SecurityUser;
-import com.oms.repositories.SecurityUserDto;
+import com.oms.repository.SecurityUserDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
