@@ -4,19 +4,19 @@ Order Management System helps you to manage the business activity of your entity
 You can create your custom dashboards using native sql scrips. Basic operations for all entities. 
 
 ## Summary
-* Screenshots
-* Getting Started (Prerequisites, Installing)
-* Running the tests
-* Deployment
-* Built With
-* Do you have any issue?
-* Contributing
-* Versioning
-* Authors
-* License
-* Donation
+# 1. Screenshots
+# 2. Getting Started (Prerequisites, Installing)
+# 3. Running the tests
+# 4. Deployment
+# 5. Built With
+# 6. Do you have any issue?
+# 7. Contributing
+# 8. Versioning
+# 9. Authors
+# 10. License
+# 11. Donations
 
-## Screenshots
+## 1. Screenshots
 <img src = "/src/main/resources/screenshots/oms-login-page.png">
 <img src = "/src/main/resources/screenshots/oms-main-page.png">
 <img src = "/src/main/resources/screenshots/oms-items-list.png">
@@ -31,7 +31,7 @@ You can create your custom dashboards using native sql scrips. Basic operations 
 <img src = "/src/main/resources/screenshots/oms-unit-of-measure-create.png">
 <img src = "/src/main/resources/screenshots/oms-unit-type-create.png">
 
-## Getting Started
+## 2. Getting Started
 
 Clone or download a copy of this project.
 Open the terminal and write the following command:
@@ -43,18 +43,14 @@ Config the git locally, in case you use different git's users:
 git config --local user.email "your_email@domain.extension"
 ```
 
-### Prerequisites
+### 2.1. Prerequisites
 
-This project requires Java 1.8, MySQL and Maven.
+This project requires Java 1.8, MySQL (or Postgres / H2) and Maven.
 
-### Installing
+### 2.2. Installing
 
-After MySQL instalation, it is required to create a dabase:
-
-```
-CREATE DATABSE oms;
-```
-Execute the content of `.sql` files, such as: 
+#### 2.2.1 Database operations.
+Execute the content of `.sql` files, such as:
 ```
 article.sql
 article_category.sql
@@ -71,11 +67,46 @@ unit_industry.sql
 unit_of_measure.sql
 unit_type.sql
 ```
+
+##### 2.2.1.1 MySql 
+After MySQL installation, it is required to create a database:
+
+```
+CREATE DATABSE oms;
+```
+
 Note: in case that you run the application starting with MySQL 8.0.4, please execute the following query:
 ```
 ALTER USER '${USER}'@'localhost' IDENTIFIED WITH mysql_native_password BY '${PASSWORD}';
 -- where ${USER} and ${PASSWORD} should be provided. 
 ```
+
+##### 2.2.1.2 Postgres
+Install PostgreSQL. It is required to create a database:
+
+Please, run the following commands if it is the case:
+```
+createuser -U postgres -s Progress
+```
+
+Please, run the following command to import a database (if it is the case):
+```
+pg_restore -d DATABASE_NAME <  PATH/BACKUP_FILE_NAME.sql
+```
+
+##### 2.2.1.3 H2
+No installation is required.
+The `spring.datasource.url` is the one required property which should be set. By default, the
+username is `sa` with empty password. Two modes: in memory and file storage. See the `application.properties`
+file for more details related configuration.
+
+#### 2.2. Run the application.
+In case of this exception: 
+```
+Unable to make field private com.sun.tools.javac.processing.JavacProcessingEnvironment$DiscoveredProcessors com.sun.tools.javac.processing.JavacProcessingEnvironment.discoveredProcs accessible: module jdk.compiler does not "opens com.sun.tools.javac.processing" to unnamed module
+```
+Change the project version from java 16 to java 8: Click-right on the project (F4 on Windows) -> Open Module Settings -> Project -> Project SDK.
+
 All this files contains initial data. Just copy and paste the file's content Go to downloaded folder and create the build (you should have something similar like the following):
 ```
 SDR:order-management-system sdrahnea$ mvn clean compile package
@@ -134,20 +165,20 @@ SDR:order-management-system sdrahnea$ mvn clean compile package
 SDR:order-management-system sdrahnea$ 
 ```
 
-## Running the tests
+## 3. Running the tests
 
 This project does not have any kind of tests :).
 
-## Deployment
+## 4. Deployment
 
-Once the build (the jar file) is ready the application can be run. Please, use the following command to run the application:
+The application can be run, once the build (the jar file) is ready t. Please, use the following command to run the application:
 ```
 SDR:order-management-system sdrahnea$ java -jar target/order-management-system-0.0.3-SNAPSHOT.jar
 ```
 If was used default configuration then the application should be available at this url: http://localhost:8081/oms/login.xhtml 
 Use the following credentials: username: admin, password: 123.
 
-## Built With
+## 5. Built With
 
 * [Java](https://www.java.com/en/download/) - Java technology allows you to work and play in a secure computing environment. Java allows you to play online games, chat with people around the world, calculate your mortgage interest, and view images in 3D, just to name a few.
 * [PrimeFaces](https://www.primefaces.org/) - PrimeFaces is a popular open source framework for JavaServer Faces featuring over 100 components, touch optimized mobilekit, client side validation, theme engine and more.
@@ -159,25 +190,32 @@ Use the following credentials: username: admin, password: 123.
 * [Maven](https://maven.apache.org/) - Apache Maven is a software project management and comprehension tool. Based on the concept of a project object model (POM), Maven can manage a project's build, reporting and documentation from a central piece of information. 
 * [Liquibase](https://www.liquibase.org/) - Liquibase is a database management tool. 
 
-## Do you have any issue?
+## 6. Do you have any issue?
 
 Please contact via LinkedIn account or drop an email (read [LICENSE.md](LICENSE.md) file) or create an issue into project's space.
 
-## Contributing
+## 7. Contributing
 
 Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
-## Versioning
+## 8. Versioning
 
 We use [SemVer](http://semver.org/) for versioning.
 
-## Authors
+## 9. Authors
 
 * **Sergiu Drahnea** - *Initial work* - [LinkedIn](https://www.linkedin.com/in/sergiu-drahnea-563745123)
 
-## License
+## 10. License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
-## Donation
+## 11. Donations
 * [PayPal](https://www.paypal.me/sdrahnea) - any donation is welcomed in case that you was pleased with this work :p
+* [EGLD](http://elrond.com/) - Address: `erd1t3t5m8v7862asdh48nq820shsmlmuw9jpm87qw25cvch7djpkapskgq4es`
+* [TROY](https://troytrade.com/) - Address: `bnb136ns6lfw4zs5hg4n85vdthaad7hq5m4gtkgf23` and Memo: `100079140`
+* [PHB](https://phoenix.global/) - Address: `bnb136ns6lfw4zs5hg4n85vdthaad7hq5m4gtkgf23` and Memo: `100079140`
+* [HOT](https://holochain.org/) - Address: `0x1ebfc62e2510f0a0558568223d1d101d0cf074b2`
+* [VET](https://www.vechain.org/) - Address: `0x1ebfc62e2510f0a0558568223d1d101d0cf074b2`
+* [TRX](https://tron.network/) - Address: `TRe8xSkGqpS73Nhk6bnvW34aiJoRTmZs8N`
+* [BTT](https://www.bittorrent.com/token/btt/) - Address: `TRe8xSkGqpS73Nhk6bnvW34aiJoRTmZs8N`
