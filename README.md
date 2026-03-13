@@ -1,57 +1,104 @@
 # Order Management System
 
-Order Management System helps you to manage the business activity of your entity. The menus are: orders, items, articles, clients, providers, dashboards.
-You can create your custom dashboards using native sql scrips. Basic operations for all entities. 
+[![Java](https://img.shields.io/badge/Java-8+-orange.svg)](https://www.java.com/)
+[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-2.x-brightgreen.svg)](https://spring.io/projects/spring-boot)
+[![Build Tool](https://img.shields.io/badge/Build-Maven-blue.svg)](https://maven.apache.org/)
+[![Database](https://img.shields.io/badge/Database-MySQL%20%7C%20PostgreSQL%20%7C%20H2-6f42c1.svg)](#database-setup)
+[![License](https://img.shields.io/badge/License-MIT-lightgrey.svg)](license.md)
 
-## Summary
-# 1. Screenshots
-# 2. Getting Started (Prerequisites, Installing)
-# 3. Running the tests
-# 4. Deployment
-# 5. Built With
-# 6. Do you have any issue?
-# 7. Contributing
-# 8. Versioning
-# 9. Authors
-# 10. License
-# 11. Donations
+A lightweight, extensible platform for managing day-to-day operational flows such as orders, items, inventory, clients, providers, and custom dashboards.
 
-## 1. Screenshots
-<img src = "/src/main/resources/screenshots/oms-login-page.png">
-<img src = "/src/main/resources/screenshots/oms-main-page.png">
-<img src = "/src/main/resources/screenshots/oms-items-list.png">
-<img src = "/src/main/resources/screenshots/oms-item-create.png">
-<img src = "/src/main/resources/screenshots/oms-article-create.png">
-<img src = "/src/main/resources/screenshots/oms-create-article.png">
-<img src = "/src/main/resources/screenshots/oms-create-new-item.png">
-<img src = "/src/main/resources/screenshots/oms-inventory-create-page.png">
-<img src = "/src/main/resources/screenshots/oms-order-create.png">
-<img src = "/src/main/resources/screenshots/oms-person-create.png">
-<img src = "/src/main/resources/screenshots/oms-unit-create.png">
-<img src = "/src/main/resources/screenshots/oms-unit-of-measure-create.png">
-<img src = "/src/main/resources/screenshots/oms-unit-type-create.png">
+## Table of Contents
+- [Overview](#overview)
+- [Features](#features)
+- [Screenshots](#screenshots)
+- [Architecture](#architecture)
+- [Tech Stack](#tech-stack)
+- [Getting Started](#getting-started)
+- [Database Setup](#database-setup)
+- [Run and Build](#run-and-build)
+- [API Examples](#api-examples)
+- [Testing](#testing)
+- [Deployment](#deployment)
+- [Support](#support)
+- [Contributing](#contributing)
+- [Versioning](#versioning)
+- [Authors](#authors)
+- [License](#license)
+- [Donations](#donations)
 
-## 2. Getting Started
+## Overview
+Order Management System helps teams run core business operations from one place. It combines a JSF web UI with Spring Boot services and a relational database backend, while supporting configurable dashboards through native SQL queries.
 
-Clone or download a copy of this project.
-Open the terminal and write the following command:
+## Features
+- Manage core entities: orders, items, articles, clients, providers, and inventory.
+- Use CRUD operations across all supported business entities.
+- Build custom dashboard views with native SQL scripts.
+- Choose between MySQL, PostgreSQL, or H2 depending on environment.
+- Start quickly with built-in seed data and default credentials.
+
+## Screenshots
+<img src="/src/main/resources/screenshots/oms-login-page.png" alt="Login page" width="840" />
+<img src="/src/main/resources/screenshots/oms-main-page.png" alt="Main page" width="840" />
+<img src="/src/main/resources/screenshots/oms-items-list.png" alt="Items list" width="840" />
+<img src="/src/main/resources/screenshots/oms-item-create.png" alt="Create item" width="840" />
+<img src="/src/main/resources/screenshots/oms-article-create.png" alt="Create article" width="840" />
+<img src="/src/main/resources/screenshots/oms-create-article.png" alt="Article form" width="840" />
+<img src="/src/main/resources/screenshots/oms-create-new-item.png" alt="New item" width="840" />
+<img src="/src/main/resources/screenshots/oms-inventory-create-page.png" alt="Inventory create" width="840" />
+<img src="/src/main/resources/screenshots/oms-order-create.png" alt="Order create" width="840" />
+<img src="/src/main/resources/screenshots/oms-person-create.png" alt="Person create" width="840" />
+<img src="/src/main/resources/screenshots/oms-unit-create.png" alt="Unit create" width="840" />
+<img src="/src/main/resources/screenshots/oms-unit-of-measure-create.png" alt="Unit of measure create" width="840" />
+<img src="/src/main/resources/screenshots/oms-unit-type-create.png" alt="Unit type create" width="840" />
+
+## Architecture
+```mermaid
+flowchart LR
+  U[User Browser] --> V[JSF / PrimeFaces Views]
+  V --> C[Spring Boot Controllers]
+  C --> S[Service Layer]
+  S --> R[Spring Data JPA Repositories]
+  R --> D[(MySQL / PostgreSQL / H2)]
+  C --> Q[Dashboard SQL Queries]
+  Q --> D
 ```
+
+## Tech Stack
+- Java 8+
+- Spring Boot
+- Spring Security
+- Spring Data JPA
+- JoinFaces + PrimeFaces
+- Liquibase
+- Maven
+- MySQL / PostgreSQL / H2
+
+## Getting Started
+Clone the repository and configure your local environment.
+
+```bash
 git clone https://github.com/sdrahnea/order-management-system.git
-```
-Config the git locally, in case you use different git's users:
-```
+cd order-management-system
 git config --local user.email "your_email@domain.extension"
 ```
 
-### 2.1. Prerequisites
+### Prerequisites
+- Java 8
+- Maven
+- One database engine: MySQL, PostgreSQL, or H2
 
-This project requires Java 1.8, MySQL (or Postgres / H2) and Maven.
+If you run into the Java module access error shown below, use Java 8 for this project:
 
-### 2.2. Installing
-
-#### 2.2.1 Database operations.
-Execute the content of `.sql` files, such as:
+```text
+Unable to make field private com.sun.tools.javac.processing.JavacProcessingEnvironment$DiscoveredProcessors ...
 ```
+
+## Database Setup
+This project ships with Liquibase changelogs and SQL data scripts.
+
+### SQL files often used for initial data
+```text
 article.sql
 article_category.sql
 article_type.sql
@@ -68,154 +115,156 @@ unit_of_measure.sql
 unit_type.sql
 ```
 
-##### 2.2.1.1 MySql 
-After MySQL installation, it is required to create a database:
+### MySQL
+Create a database:
 
-```
-CREATE DATABSE oms;
+```sql
+CREATE DATABASE oms;
 ```
 
-Note: in case that you run the application starting with MySQL 8.0.4, please execute the following query:
-```
+For some MySQL 8 setups, you may need:
+
+```sql
 ALTER USER '${USER}'@'localhost' IDENTIFIED WITH mysql_native_password BY '${PASSWORD}';
--- where ${USER} and ${PASSWORD} should be provided. 
 ```
 
-##### 2.2.1.2 Postgres
-Install PostgreSQL. It is required to create a database:
+### PostgreSQL
+Example commands:
 
-Please, run the following commands if it is the case:
-```
+```bash
 createuser -U postgres -s Progress
+pg_restore -d DATABASE_NAME < PATH/BACKUP_FILE_NAME.sql
 ```
 
-Please, run the following command to import a database (if it is the case):
-```
-pg_restore -d DATABASE_NAME <  PATH/BACKUP_FILE_NAME.sql
-```
+### H2
+No installation required. By default, `application.properties` uses file storage mode.
 
-##### 2.2.1.3 H2
-No installation is required.
-The `spring.datasource.url` is the one required property which should be set. By default, the
-username is `sa` with empty password. Two modes: in memory and file storage. See the `application.properties`
-file for more details related configuration.
+## Run and Build
+Build the project:
 
-#### 2.2. Run the application.
-In case of this exception: 
-```
-Unable to make field private com.sun.tools.javac.processing.JavacProcessingEnvironment$DiscoveredProcessors com.sun.tools.javac.processing.JavacProcessingEnvironment.discoveredProcs accessible: module jdk.compiler does not "opens com.sun.tools.javac.processing" to unnamed module
-```
-Change the project version from java 16 to java 8: Click-right on the project (F4 on Windows) -> Open Module Settings -> Project -> Project SDK.
-
-All this files contains initial data. Just copy and paste the file's content Go to downloaded folder and create the build (you should have something similar like the following):
-```
-SDR:order-management-system sdrahnea$ mvn clean compile package
-[INFO] Scanning for projects...
-[INFO] 
-[INFO] ------------------< com.oms:order-management-system >-------------------
-[INFO] Building order-management-system 0.0.3-SNAPSHOT
-[INFO] --------------------------------[ jar ]---------------------------------
-[INFO] 
-[INFO] --- maven-clean-plugin:2.6.1:clean (default-clean) @ order-management-system ---
-[INFO] Deleting /my-projects/order-management-system/target
-[INFO] 
-[INFO] --- maven-enforcer-plugin:1.4.1:enforce (enforce-versions) @ order-management-system ---
-[INFO] 
-[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ order-management-system ---
-[INFO] Using 'UTF-8' encoding to copy filtered resources.
-[INFO] Copying 1 resource
-[INFO] Copying 69 resources
-[INFO] 
-[INFO] --- maven-compiler-plugin:3.7.0:compile (default-compile) @ order-management-system ---
-[INFO] Changes detected - recompiling the module!
-[INFO] Compiling 127 source files to /my-projects/order-management-system/target/classes
-[INFO] /my-projects/order-management-system/src/main/java/com/oms/controller/AbstractController.java: Some input files use unchecked or unsafe operations.
-[INFO] /my-projects/order-management-system/src/main/java/com/oms/controller/AbstractController.java: Recompile with -Xlint:unchecked for details.
-[INFO] 
-[INFO] --- maven-enforcer-plugin:1.4.1:enforce (enforce-versions) @ order-management-system ---
-[INFO] 
-[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ order-management-system ---
-[INFO] Using 'UTF-8' encoding to copy filtered resources.
-[INFO] Copying 1 resource
-[INFO] Copying 69 resources
-[INFO] 
-[INFO] --- maven-compiler-plugin:3.7.0:compile (default-compile) @ order-management-system ---
-[INFO] Nothing to compile - all classes are up to date
-[INFO] 
-[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ order-management-system ---
-[INFO] Using 'UTF-8' encoding to copy filtered resources.
-[INFO] skip non existing resourceDirectory /my-projects/order-management-system/src/test/resources
-[INFO] 
-[INFO] --- maven-compiler-plugin:3.7.0:testCompile (default-testCompile) @ order-management-system ---
-[INFO] Nothing to compile - all classes are up to date
-[INFO] 
-[INFO] --- maven-surefire-plugin:2.18.1:test (default-test) @ order-management-system ---
-[INFO] No tests to run.
-[INFO] 
-[INFO] --- maven-jar-plugin:3.0.2:jar (default-jar) @ order-management-system ---
-[INFO] Building jar: /my-projects/order-management-system/target/order-management-system-0.0.3-SNAPSHOT.jar
-[INFO] 
-[INFO] --- spring-boot-maven-plugin:1.5.7.RELEASE:repackage (default) @ order-management-system ---
-[INFO] ------------------------------------------------------------------------
-[INFO] BUILD SUCCESS
-[INFO] ------------------------------------------------------------------------
-[INFO] Total time:  8.183 s
-[INFO] Finished at: 2019-01-10T10:14:15+02:00
-[INFO] ------------------------------------------------------------------------
-SDR:order-management-system sdrahnea$ 
+```bash
+mvn clean compile package
 ```
 
-## 3. Running the tests
+Run locally:
 
-This project does not have any kind of tests :).
-
-## 4. Deployment
-
-The application can be run, once the build (the jar file) is ready t. Please, use the following command to run the application:
+```bash
+mvn spring-boot:run
 ```
-SDR:order-management-system sdrahnea$ java -jar target/order-management-system-0.0.3-SNAPSHOT.jar
+
+or run the jar:
+
+```bash
+java -jar target/order-management-system-2.0.0.jar
 ```
-If was used default configuration then the application should be available at this url: http://localhost:8081/oms/login.xhtml 
-Use the following credentials: username: admin, password: 123.
 
-## 5. Built With
+Default URL (from current configuration):
+- `http://localhost:8081/oms/login.xhtml`
 
-* [Java](https://www.java.com/en/download/) - Java technology allows you to work and play in a secure computing environment. Java allows you to play online games, chat with people around the world, calculate your mortgage interest, and view images in 3D, just to name a few.
-* [PrimeFaces](https://www.primefaces.org/) - PrimeFaces is a popular open source framework for JavaServer Faces featuring over 100 components, touch optimized mobilekit, client side validation, theme engine and more.
-* [Spring Security](https://spring.io/projects/spring-security) - Spring Security is a powerful and highly customizable authentication and access-control framework. It is the de-facto standard for securing Spring-based applications.
-* [Spring Boot](https://spring.io/projects/spring-boot) - Spring Boot makes it easy to create stand-alone, production-grade Spring based Applications that you can "just run".
-* [Spring Data](https://spring.io/projects/spring-data) - Spring Data’s mission is to provide a familiar and consistent, Spring-based programming model for data access while still retaining the special traits of the underlying data store.
-* [Spring Data JPA](https://spring.io/projects/spring-data-jpa) - Spring Data JPA, part of the larger Spring Data family, makes it easy to easily implement JPA based repositories. This module deals with enhanced support for JPA based data access layers. It makes it easier to build Spring-powered applications that use data access technologies.
-* [MySQL](https://www.mysql.com/) - MySQL is the world's most popular open source database. Whether you are a fast growing web property, technology ISV or large enterprise, MySQL can cost-effectively help you deliver high performance, scalable database applications.
-* [Maven](https://maven.apache.org/) - Apache Maven is a software project management and comprehension tool. Based on the concept of a project object model (POM), Maven can manage a project's build, reporting and documentation from a central piece of information. 
-* [Liquibase](https://www.liquibase.org/) - Liquibase is a database management tool. 
+Default credentials:
+- username: `admin`
+- password: `123`
 
-## 6. Do you have any issue?
+## API Examples
+### Available API endpoint
+User registration endpoint in `src/main/java/com/oms/controller/MainRestController.java`:
 
-Please contact via LinkedIn account or drop an email (read [LICENSE.md](LICENSE.md) file) or create an issue into project's space.
+- `POST /api/user/register`
 
-## 7. Contributing
+Request:
 
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
+```http
+POST /api/user/register
+Content-Type: application/json
 
-## 8. Versioning
+{
+  "username": "new.user",
+  "password": "StrongPassword123",
+  "email": "new.user@example.com"
+}
+```
 
-We use [SemVer](http://semver.org/) for versioning.
+Response (example):
 
-## 9. Authors
+```json
+{
+  "id": 42,
+  "username": "new.user",
+  "enabled": true
+}
+```
 
-* **Sergiu Drahnea** - *Initial work* - [LinkedIn](https://www.linkedin.com/in/sergiu-drahnea-563745123)
+### Upload API request/response example
+This repository currently does not expose a dedicated upload endpoint in the REST controllers. For teams extending OMS with file import/export, the following is a compact example contract:
 
-## 10. License
+Request:
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+```http
+POST /api/upload
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary
 
-## 11. Donations
-* [PayPal](https://www.paypal.me/sdrahnea) - any donation is welcomed in case that you was pleased with this work :p
-* [EGLD](http://elrond.com/) - Address: `erd1t3t5m8v7862asdh48nq820shsmlmuw9jpm87qw25cvch7djpkapskgq4es`
-* [TROY](https://troytrade.com/) - Address: `bnb136ns6lfw4zs5hg4n85vdthaad7hq5m4gtkgf23` and Memo: `100079140`
-* [PHB](https://phoenix.global/) - Address: `bnb136ns6lfw4zs5hg4n85vdthaad7hq5m4gtkgf23` and Memo: `100079140`
-* [HOT](https://holochain.org/) - Address: `0x1ebfc62e2510f0a0558568223d1d101d0cf074b2`
-* [VET](https://www.vechain.org/) - Address: `0x1ebfc62e2510f0a0558568223d1d101d0cf074b2`
-* [TRX](https://tron.network/) - Address: `TRe8xSkGqpS73Nhk6bnvW34aiJoRTmZs8N`
-* [BTT](https://www.bittorrent.com/token/btt/) - Address: `TRe8xSkGqpS73Nhk6bnvW34aiJoRTmZs8N`
+------WebKitFormBoundary
+Content-Disposition: form-data; name="file"; filename="inventory.xlsx"
+Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+
+(binary)
+------WebKitFormBoundary--
+```
+
+Response (example):
+
+```json
+{
+  "uploadId": "up_01JXYZABC123",
+  "fileName": "inventory.xlsx",
+  "status": "RECEIVED",
+  "rowsDetected": 128,
+  "message": "File queued for processing"
+}
+```
+
+## Testing
+Automated tests are currently minimal and may be absent in some modules.
+
+Run tests with:
+
+```bash
+mvn test
+```
+
+## Deployment
+After building the jar, run:
+
+```bash
+java -jar target/order-management-system-2.0.0.jar
+```
+
+When running with default properties, the app is available at:
+- `http://localhost:8081/oms/login.xhtml`
+
+## Support
+If you run into an issue, open a GitHub issue or contact the maintainer using details in `license.md`.
+
+## Contributing
+Please read `CONTRIBUTING.md` for contribution guidelines and pull request process.
+
+## Versioning
+This project follows [SemVer](https://semver.org/).
+
+## Authors
+- Sergiu Drahnea - Initial work - [LinkedIn](https://www.linkedin.com/in/sergiu-drahnea-563745123)
+
+## License
+Licensed under the MIT License. See `license.md`.
+
+## Donations
+If this project helps you, donations are appreciated.
+
+- [PayPal](https://www.paypal.me/sdrahnea)
+- [EGLD](http://elrond.com/) - `erd1t3t5m8v7862asdh48nq820shsmlmuw9jpm87qw25cvch7djpkapskgq4es`
+- [TROY](https://troytrade.com/) - Address: `bnb136ns6lfw4zs5hg4n85vdthaad7hq5m4gtkgf23` | Memo: `100079140`
+- [PHB](https://phoenix.global/) - Address: `bnb136ns6lfw4zs5hg4n85vdthaad7hq5m4gtkgf23` | Memo: `100079140`
+- [HOT](https://holochain.org/) - `0x1ebfc62e2510f0a0558568223d1d101d0cf074b2`
+- [VET](https://www.vechain.org/) - `0x1ebfc62e2510f0a0558568223d1d101d0cf074b2`
+- [TRX](https://tron.network/) - `TRe8xSkGqpS73Nhk6bnvW34aiJoRTmZs8N`
+- [BTT](https://www.bittorrent.com/token/btt/) - `TRe8xSkGqpS73Nhk6bnvW34aiJoRTmZs8N`
